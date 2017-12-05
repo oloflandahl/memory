@@ -1,2 +1,1 @@
-# memory
-Memory game
+Memory game implemented in ReactJS
