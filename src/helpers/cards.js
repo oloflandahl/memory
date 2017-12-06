@@ -11,7 +11,7 @@ const getNoOfCards = (noOfCards, noOfMatches) => {
 const createCard = (i, noOftypes) => {
   return Object.assign({}, initialCardState, { 
     id: i, 
-    name: 'Card '+i, 
+    name: 'Card '+i, // Remove
     type: types[i % noOftypes] 
   });
 };
@@ -64,6 +64,7 @@ const toggleCardDone = (card, isDone) => {
 
 const getCard = (cards, id) => ( cards.filter(card => card.id === id)[0] );
 const getActiveCards = cards => ( cards.filter(card => card.isActive) );
+const getNoOfCardsWithType = (cards, type) => ( cards.filter(card => card.type === type).length );
 
 
-export { initCards, getCard, getActiveCards, toggleCardActive, toggleCardDone };
+export { initCards, toggleCardActive, toggleCardDone, getCard, getActiveCards, getNoOfCardsWithType };

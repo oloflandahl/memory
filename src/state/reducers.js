@@ -1,10 +1,20 @@
 import { combineReducers } from 'redux'
-import { START_GAME, DONE_GAME, END_GAME, TOGGLE_LOCK_GAME, ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_TYPE_TO_DONE } from './actions';
-import { initialGameState } from '../data/constants';
+import { SET_NO_OF_CARDS, SET_NO_OF_MATCHES, START_GAME, DONE_GAME, END_GAME, TOGGLE_LOCK_GAME, ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_TYPE_TO_DONE } from './actions';
+import { initialGameNumbers, initialGameState } from '../data/constants';
 import { initCards, toggleCardActive, toggleCardDone } from '../helpers/cards';
 
+const gameNumbers = (state = initialGameNumbers, action) => {
+  switch(action.type) {
+    case SET_NO_OF_CARDS:
+      return Object.assign({}, state, { noOfCards: action.noOfCards });
+    case SET_NO_OF_MATCHES:
+      return Object.assign({}, state, { noOfMatches: action.noOfMatches });
+    default:
+      return state;
+  }
+};
 
-function gameState(state = initialGameState, action) {
+const gameState = (state = initialGameState, action) => {
   switch(action.type) {
     case START_GAME: 
       return Object.assign({}, initialGameState, { isStarted: true });
@@ -21,9 +31,9 @@ function gameState(state = initialGameState, action) {
     default:
       return state;
   }
-}
+};
 
-function cards(state = [], action) {
+const cards = (state = [], action) => {
   switch(action.type) {
     case START_GAME: 
       return initCards(action.noOfCards, action.noOfMatches);
@@ -38,9 +48,9 @@ function cards(state = [], action) {
     default: 
       return state;
   }
-}
+};
 
 
-const game = combineReducers({ gameState, cards });
+const game = combineReducers({ gameNumbers, gameState, cards });
 
 export default game;

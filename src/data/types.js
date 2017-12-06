@@ -5,7 +5,8 @@ const types = [
   'CEPA',
   'DEPA',
   'EPA',
-  'FEPA'
+  'FEPA',
+  'GEPA'
 ];
 
 export { types };

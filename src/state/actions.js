@@ -1,9 +1,11 @@
 import { defaultLockTimeMs } from '../data/constants'
-import { getCard, getActiveCards } from '../helpers/cards'
+import { getCard, getActiveCards, getNoOfCardsWithType } from '../helpers/cards'
 
 
 // Action types
 
+export const SET_NO_OF_CARDS = 'SET_NO_OF_CARDS';
+export const SET_NO_OF_MATCHES = 'SET_NO_OF_MATCHES';
 export const START_GAME = 'START_GAME';
 export const DONE_GAME = 'DONE_GAME';
 export const END_GAME = 'END_GAME';
@@ -14,6 +16,16 @@ export const CARD_TYPE_TO_DONE = 'CARD_TYPE_TO_DONE';
 
 
 // Action creators
+
+export const setNoOfCards = (noOfCards) => ({
+  type: SET_NO_OF_CARDS,
+  noOfCards
+});
+
+export const setNoOfMatches = (noOfMatches) => ({
+  type: SET_NO_OF_MATCHES,
+  noOfMatches
+});
 
 export const startGame = (noOfCards, noOfMatches) => ({ 
   type: START_GAME, 
@@ -57,9 +69,14 @@ export const flipCard = id => {
     }
 
     const card = getCard(cards, id);
+    if (card.isActive) {
+      return;
+    }
+
+    const noOfMatches = getNoOfCardsWithType(cards, card.type);
     const activeCards = getActiveCards(cards);
-    if (activeCards.length === 1 && activeCards[0].id !== card.id) {
-      if (activeCards[0].type === card.type) {
+    if (activeCards.length === noOfMatches - 1) {
+      if (getNoOfCardsWithType(activeCards, card.type) === noOfMatches - 1) {
         dispatch(setCardTypeToDone(card.type));
       } else {
         dispatch(activateCard(id));

@@ -1,18 +1,27 @@
 import { connect } from 'react-redux'
-import { startGame } from '../state/actions'
+import { setNoOfCards, setNoOfMatches, startGame } from '../state/actions'
 import Menu from '../components/Menu'
 
 const mapStateToProps = state => ({
+  gameNumbers: state.gameNumbers,
   gameState: state.gameState
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onStartGame: () => {
-      dispatch(startGame(ownProps.noOfCards, 2));
+    onChangeNoOfCards: (event) => {
+      const noOfCards = parseInt(event.target.value) || 0;
+      dispatch(setNoOfCards(noOfCards));
     },
-    onRestartGame: () => {
-      dispatch(startGame(ownProps.noOfCards, 2));
+    onChangeNoOfMatches: (event) => {
+      const noOfMatches = parseInt(event.target.value) || 0;
+      dispatch(setNoOfMatches(noOfMatches));
+    },
+    onStartGame: (noOfCards, noOfMatches) => {
+      dispatch(startGame(noOfCards, noOfMatches));
+    },
+    onRestartGame: (noOfCards, noOfMatches) => {
+      dispatch(startGame(noOfCards, noOfMatches));
     }
   };
 };
