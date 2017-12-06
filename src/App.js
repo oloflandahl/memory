@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-import { Game } from './components/Game';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+import game from './state/reducers';
+import Game from './components/Game';
 import './App.css';
+
+const store = createStore(
+  game,
+  applyMiddleware(ReduxThunk)
+);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Game count="5" />
-      </div>
+      <Provider store={store}>
+        <Game />
+      </Provider>
     );
   }
 }

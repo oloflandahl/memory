@@ -1,5 +1,5 @@
 
-const Types = [
+const types = [
   'APA',
   'BEPA',
   'CEPA',
@@ -7,4 +7,4 @@ const Types = [
   'EPA'
 ];
 
-export { Types };
+export { types };
