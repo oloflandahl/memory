@@ -1,5 +1,5 @@
-import { defaultNoOfCards, defaultNoOfMatches, initialCardState } from './../data/constants';
-import { types } from './../data/types';
+import { defaultNoOfCards, defaultNoOfMatches, initialCardState } from '../data/constants';
+import { types } from '../data/types';
 
 
 const getNoOfCards = (noOfCards, noOfMatches) => {
@@ -9,7 +9,26 @@ const getNoOfCards = (noOfCards, noOfMatches) => {
 };
 
 const createCard = (i, noOftypes) => {
-  return Object.assign({}, initialCardState, { id: i, name: 'Card '+i, type: types[i % noOftypes] });
+  return Object.assign({}, initialCardState, { 
+    id: i, 
+    name: 'Card '+i, 
+    type: types[i % noOftypes] 
+  });
+};
+
+const shuffle = (array) => {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 };
 
 const createCards = (noOfCards, noOftypes) => {
@@ -17,7 +36,7 @@ const createCards = (noOfCards, noOftypes) => {
   for (let i = 1; i <= noOfCards; i++) {
     cards.push(createCard(i, noOftypes));
   }
-  return cards;
+  return shuffle(cards);
 };
 
 const initCards = (noOfCards = defaultNoOfCards, noOfMatches = defaultNoOfMatches) => {
