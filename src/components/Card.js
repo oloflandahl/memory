@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './Card.css';
 
 
 const Card = ({onClick, name, isActive, isDone, type}) => {
 
   const isOpen = isActive || isDone;
-  const className = 'card' + (isOpen ? ' open' : '') + (isDone ? ' locked' : '');
+  const className = 'card' + (isOpen ? ' open' : '') + (isDone ? ' done' : '');
   const typeElement = isOpen ? (<div>{type}</div>) : null;
 
   return (
@@ -13,6 +15,14 @@ const Card = ({onClick, name, isActive, isDone, type}) => {
       {typeElement}
     </div>
   );
+};
+
+Card.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  isDone: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default Card;

@@ -1,29 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Menu = ({ gameNumbers, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
+const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
 
-  const noOfCardsInput = !gameState.isStarted ? (
-      <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} />
+  const startControls = showStartControls ? (
+      <div>
+        <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} />
+        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} />
+        <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)}>Start</button>
+      </div>
     ) : null;
 
-  const noOfMatchesInput = !gameState.isStarted ? (
-      <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} />
-    ) : null;
-
-  const startButton = !gameState.isStarted ? (
-      <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)}>Start</button>
-    ) : null;
-
-  const resetButton = gameState.isStarted && !gameState.isDone ? (
+  const resetButton = showResetButton ? (
       <button onClick={onRestartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)}>Restart</button>
     ) : null;
 
   return (
     <div>
       <div>
-        {noOfCardsInput}
-        {noOfMatchesInput}
-        {startButton}
+        {startControls}
         {resetButton}
       </div>
       <div>
@@ -33,6 +28,23 @@ const Menu = ({ gameNumbers, gameState, onChangeNoOfCards, onChangeNoOfMatches, 
     </div>
   );
 
+};
+
+Menu.propTypes = {
+  showStartControls: PropTypes.bool.isRequired,
+  showResetButton: PropTypes.bool.isRequired,
+  gameNumbers: PropTypes.shape({
+    noOfCards: PropTypes.number.isRequired,
+    noOfMatches: PropTypes.number.isRequired
+  }).isRequired,
+  gameState: PropTypes.shape({
+    noOfSuccesses: PropTypes.number.isRequired,
+    noOfFails: PropTypes.number.isRequired
+  }).isRequired,
+  onChangeNoOfCards: PropTypes.func.isRequired,
+  onChangeNoOfMatches: PropTypes.func.isRequired,
+  onStartGame: PropTypes.func.isRequired,
+  onRestartGame: PropTypes.func.isRequired
 };
 
 export default Menu;

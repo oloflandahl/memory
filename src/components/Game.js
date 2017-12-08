@@ -5,7 +5,7 @@ import CardsContainer from '../containers/CardsContainer';
 
 const Game = () => (
   <div>
-    <h1>The Game</h1>
+    <h1>Memory</h1>
     <MenuContainer></MenuContainer>
     <CardsContainer></CardsContainer>
   </div>

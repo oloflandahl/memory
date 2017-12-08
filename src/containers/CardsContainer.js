@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { flipCard } from '../state/actions'
+import { flipCard } from '../actions/cardActions'
 import Cards from '../components/Cards'
 
 const mapStateToProps = state => ({
