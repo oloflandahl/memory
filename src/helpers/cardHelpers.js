@@ -41,7 +41,7 @@ const createCards = (noOfCards, noOftypes) => {
 
 const initCards = (noOfCards = defaultNoOfCards, noOfMatches = defaultNoOfMatches) => {
 
-  noOfCards = getNoOfCards(noOfCards, defaultNoOfMatches);
+  noOfCards = getNoOfCards(noOfCards, noOfMatches);
 
   let noOftypes = noOfCards / noOfMatches;
   if (noOftypes > types.length) {
@@ -52,10 +52,10 @@ const initCards = (noOfCards = defaultNoOfCards, noOfMatches = defaultNoOfMatche
   return createCards(noOfCards, noOftypes);
 };
 
-const toggleCardActive = (card, isActive) => ( 
-  Object.assign({}, card, { isActive: isActive || false }) 
-);
-
+const toggleCardActive = (card, isActive) => { 
+  isActive = (card.isDone ? false : isActive) || false;
+  return Object.assign({}, card, { isActive: isActive }); 
+};
 
 const toggleCardDone = (card, isDone) => {
   const isActive = isDone ? false : card.isActive;
