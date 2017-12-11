@@ -13,7 +13,7 @@ const cardsReducer = (state = [], action) => {
     case DEACTIVATE_CARDS:
       return state.map(card => toggleCardActive(card, false));
     case CARD_TYPE_TO_DONE:
-      return state.map(card => toggleCardDone(card, card.isDone || (card.isActive && card.type === action.cardType)));
+      return state.map(card => toggleCardDone(card, card.isDone || card.type === action.cardType));
     default:
       return state;
   }

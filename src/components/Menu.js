@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
+const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, updatedLimits, areGameNumbersValid, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
 
   const startControls = showStartControls ? (
       <div>
-        <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} />
-        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} />
-        <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)}>Start</button>
+        <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} min={gameNumbers.noOfMatches} max={updatedLimits.maxNoOfCards} step={gameNumbers.noOfMatches} />
+        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min="1" max="5" />
+        <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!areGameNumbersValid}>Start</button>
       </div>
     ) : null;
 
