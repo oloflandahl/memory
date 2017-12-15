@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, updatedLimits, areGameNumbersValid, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
+const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
 
   const startControls = showStartControls ? (
       <div>
-        <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} min={gameNumbers.noOfMatches} max={updatedLimits.maxNoOfCards} step={gameNumbers.noOfMatches} />
-        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min={updatedLimits.minNoOfMatches} max={updatedLimits.maxNoOfMatches} />
-        <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!areGameNumbersValid}>Start</button>
+        <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} min={gameNumbers.noOfMatches} max={gameNumbers.limits.maxNoOfCards} step={gameNumbers.noOfMatches} />
+        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min={gameNumbers.limits.minNoOfMatches} max={gameNumbers.limits.maxNoOfMatches} />
+        <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!gameNumbers.isValid}>Start</button>
       </div>
     ) : null;
 

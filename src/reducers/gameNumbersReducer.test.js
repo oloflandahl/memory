@@ -1,5 +1,5 @@
 import { SET_NO_OF_CARDS, SET_NO_OF_MATCHES } from '../actions/gameActions';
-import { initialGameNumbers } from '../data/constants';
+import { initialGameNumbers, limits } from '../data/constants';
 import gameNumbersReducer from './gameNumbersReducer';
 
 let action;
@@ -12,10 +12,46 @@ describe(SET_NO_OF_CARDS, () => {
     }
   });
 
-  it('setting number of cards to 25', () => {
-    action.noOfCards = 25;
-    const gameNumbers = gameNumbersReducer(undefined, action);
-    expect(gameNumbers.noOfCards).toEqual(25);
+  describe('setting number of cards to 17', () => {
+
+    let gameNumbers;
+    beforeEach(() => {
+      action.noOfCards = 17;
+      gameNumbers = gameNumbersReducer(undefined, action);
+    });
+
+    it('number of cards should be 17', () => {
+      expect(gameNumbers.noOfCards).toEqual(17);
+    });
+
+    it('number of matches should be 2', () => {
+      expect(gameNumbers.noOfMatches).toEqual(2);
+    });
+
+    it('numbers should be invalid', () => {
+      expect(gameNumbers.isValid).toEqual(false);
+    });
+  });
+
+  describe('setting number of cards to 12', () => {
+
+    let gameNumbers;
+    beforeEach(() => {
+      action.noOfCards = 12;
+      gameNumbers = gameNumbersReducer(undefined, action);
+    });
+
+    it('number of cards should be 12', () => {
+      expect(gameNumbers.noOfCards).toEqual(12);
+    });
+
+    it('number of matches should be 2', () => {
+      expect(gameNumbers.noOfMatches).toEqual(2);
+    });
+
+    it('numbers should be valid', () => {
+      expect(gameNumbers.isValid).toEqual(true);
+    });
   });
 
 });
@@ -28,10 +64,70 @@ describe(SET_NO_OF_MATCHES, () => {
     }
   });
 
-  it('setting number of matches to 4', () => {
-    action.noOfMatches = 4;
-    const gameNumbers = gameNumbersReducer(undefined, action);
-    expect(gameNumbers.noOfMatches).toEqual(4);
+  describe('setting number of matches to 3', () => {
+
+    let gameNumbers;
+    beforeEach(() => {
+      action.noOfMatches = 3;
+      gameNumbers = gameNumbersReducer(undefined, action);
+    });
+
+    it('number of cards should be 10', () => {
+      expect(gameNumbers.noOfCards).toEqual(10);
+    });
+
+    it('number of matches should be 3', () => {
+      expect(gameNumbers.noOfMatches).toEqual(3);
+    });
+
+    it('numbers should be invalid', () => {
+      expect(gameNumbers.isValid).toEqual(false);
+    });
+  });
+
+  describe('setting number of matches to 5', () => {
+
+    let gameNumbers;
+    beforeEach(() => {
+      action.noOfMatches = 5;
+      gameNumbers = gameNumbersReducer(undefined, action);
+    });
+
+    it('number of cards should be 10', () => {
+      expect(gameNumbers.noOfCards).toEqual(10);
+    });
+
+    it('number of matches should be 5', () => {
+      expect(gameNumbers.noOfMatches).toEqual(5);
+    });
+
+    it('numbers should be valid', () => {
+      expect(gameNumbers.isValid).toEqual(true);
+    });
+  });
+
+  it('setting number of cards outside limits should make it invalid', () => {
+    let gameNumbers;
+
+    action.noOfCards = limits.minNoOfCards - 1;
+    gameNumbers = gameNumbersReducer(undefined, action);
+    expect(gameNumbers.isValid).toEqual(false);
+
+    action.noOfCards = limits.maxNoOfCards + 1;
+    gameNumbers = gameNumbersReducer(undefined, action);
+    expect(gameNumbers.isValid).toEqual(false);
+  });
+
+  it('setting number of matches outside limits should make it invalid', () => {
+    let gameNumbers;
+
+    action.noOfMatches = limits.minNoOfMatches - 2;
+    gameNumbers = gameNumbersReducer(undefined, action);
+    expect(gameNumbers.isValid).toEqual(false);
+
+    action.noOfMatches = limits.maxNoOfMatches + 2;
+    gameNumbers = gameNumbersReducer(undefined, action);
+    expect(gameNumbers.isValid).toEqual(false);
   });
 
 });

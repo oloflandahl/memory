@@ -108,9 +108,9 @@ describe(CARD_TYPE_TO_DONE, () => {
     }
   });
 
-  it('setting an inactive card to done should do nothing', () => {
+  it('setting an inactive card to done should make it done', () => {
     const cards = cardsReducer(mockCards, action);
-    expect(cards[0].isDone).toEqual(false);
+    expect(cards[0].isDone).toEqual(true);
   });
 
   it('setting an active card to done should make it done', () => {

@@ -1,5 +1,5 @@
-export const defaultNoOfCards = 15;
-export const defaultNoOfMatches = 3;
+export const defaultNoOfCards = 10;
+export const defaultNoOfMatches = 2;
 export const defaultLockTimeMs = 2000;
 
 export const limits = {
@@ -11,7 +11,9 @@ export const limits = {
 
 export const initialGameNumbers = {
   noOfCards: defaultNoOfCards,
-  noOfMatches: defaultNoOfMatches
+  noOfMatches: defaultNoOfMatches,
+  limits: limits,
+  isValid: true
 };
 
 export const initialGameState = { 

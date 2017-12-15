@@ -57,7 +57,7 @@ describe('initCards', () => {
   });
 
   it('A number of cards that is not a possible product of the number of matches should have the closest product down from that number', () => {
-    const cards = initCards(14);
+    const cards = initCards(13);
     expect(cards.length).toEqual(12);
   });
 
