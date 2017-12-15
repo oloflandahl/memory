@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { setNoOfCards, setNoOfMatches, startGame } from '../actions/gameActions'
 import { limits } from '../data/constants'
 import { types } from '../data/types'
+import { isBetween } from '../helpers/mathHelpers'
 import Menu from '../components/Menu'
 
 const mapStateToProps = state => {
@@ -18,7 +19,10 @@ const mapStateToProps = state => {
     maxNoOfCards: Math.min(limits.maxNoOfCards, noOfMatches * noOfTypes)
   });
 
-  const areGameNumbersValid = noOfCards <= updatedLimits.maxNoOfCards && noOfCards % noOfMatches === 0;
+  const areGameNumbersValid = 
+    isBetween(noOfCards, updatedLimits.minNoOfCards, updatedLimits.maxNoOfCards) && 
+    isBetween(noOfMatches, updatedLimits.minNoOfMatches, updatedLimits.maxNoOfMatches) &&
+    noOfCards % noOfMatches === 0;
 
   return {
     showStartControls: !isStarted,

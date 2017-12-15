@@ -6,7 +6,7 @@ const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, upda
   const startControls = showStartControls ? (
       <div>
         <input type="number" defaultValue={gameNumbers.noOfCards} onChange={onChangeNoOfCards} min={gameNumbers.noOfMatches} max={updatedLimits.maxNoOfCards} step={gameNumbers.noOfMatches} />
-        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min="1" max="5" />
+        <input type="number" defaultValue={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min={updatedLimits.minNoOfMatches} max={updatedLimits.maxNoOfMatches} />
         <button onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!areGameNumbersValid}>Start</button>
       </div>
     ) : null;

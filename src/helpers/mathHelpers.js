@@ -1,4 +1,4 @@
 
 export const isBetween = (val, min, max, ) => {
-  return val >= 
+  return min <= val && val <= max; 
 };
