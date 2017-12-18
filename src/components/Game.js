@@ -1,11 +1,11 @@
 import React from 'react';
 import MenuContainer from '../containers/MenuContainer';
 import CardsContainer from '../containers/CardsContainer';
+import './Game.css';
 
 
 const Game = () => (
-  <div>
-    <h1>Memory</h1>
+  <div class="container">
     <MenuContainer></MenuContainer>
     <CardsContainer></CardsContainer>
   </div>

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import './Cards.css';
 
-const Cards = ({ cards, onCardClick }) => (
-    cards.map((card) => <Card key={card.id} {...card} onClick={() => onCardClick(card.id)} />)
-);
+const Cards = ({ cards, onCardClick }) => {
+  const cardsMarkup = cards.map((card) => <Card key={card.id} {...card} onClick={() => onCardClick(card.id)} />);
+  return (<div class="cards-container">{cardsMarkup}</div>);
+};
 
 Cards.propTypes = {
   cards: PropTypes.arrayOf(

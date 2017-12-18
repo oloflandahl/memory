@@ -1,0 +1,14 @@
+.menu-container {
+  grid-area: menu;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid #333;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.menu-container .btn {
+  margin-top: 20px;
+}
