@@ -1,10 +1,18 @@
 import { connect } from 'react-redux'
+import { getMaxPercentageSize } from '../helpers/mathHelpers'
 import { flipCard } from '../actions/cardActions'
 import Cards from '../components/Cards'
 
-const mapStateToProps = state => ({
-  cards: state.cards
-});
+const mapStateToProps = state => {
+  const percentage = getMaxPercentageSize(state.cards.length) + '%';
+  return {
+    cards: state.cards,
+    size: {
+      width: percentage,
+      height: percentage
+    }
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {

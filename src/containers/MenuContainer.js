@@ -1,8 +1,5 @@
 import { connect } from 'react-redux'
 import { setNoOfCards, setNoOfMatches, startGame } from '../actions/gameActions'
-import { limits } from '../data/constants'
-import { types } from '../data/types'
-import { isBetween } from '../helpers/mathHelpers'
 import Menu from '../components/Menu'
 
 const mapStateToProps = state => {

@@ -5,7 +5,7 @@ import './Game.css';
 
 
 const Game = () => (
-  <div class="container">
+  <div className="container">
     <MenuContainer></MenuContainer>
     <CardsContainer></CardsContainer>
   </div>

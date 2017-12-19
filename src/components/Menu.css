@@ -9,6 +9,12 @@
   text-align: center;
 }
 
+@media screen and (orientation: portrait) {
+  .menu-container {
+    flex-direction: row;
+  }
+}
+
 .menu-container .btn {
-  margin-top: 20px;
+  margin-top: 1rem;
 }

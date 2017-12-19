@@ -1,5 +1,5 @@
 import { defaultNoOfCards, defaultNoOfMatches, initialCardState } from '../data/constants';
-import { types } from '../data/types';
+import { icons } from '../data/icons';
 
 
 const getNoOfCards = (noOfCards, noOfMatches) => {
@@ -8,11 +8,11 @@ const getNoOfCards = (noOfCards, noOfMatches) => {
   return noOfCards;
 };
 
-const createCard = (i, noOftypes) => {
+const createCard = (i, noOfIcons) => {
   return Object.assign({}, initialCardState, { 
     id: i, 
     name: 'Card '+i, // Remove
-    type: types[i % noOftypes] 
+    type: icons[i % noOfIcons] 
   });
 };
 
@@ -31,10 +31,10 @@ const shuffle = (array) => {
   return array;
 };
 
-const createCards = (noOfCards, noOftypes) => {
+const createCards = (noOfCards, noOfIcons) => {
   const cards = [];
   for (let i = 1; i <= noOfCards; i++) {
-    cards.push(createCard(i, noOftypes));
+    cards.push(createCard(i, noOfIcons));
   }
   return shuffle(cards);
 };
@@ -43,13 +43,13 @@ const initCards = (noOfCards = defaultNoOfCards, noOfMatches = defaultNoOfMatche
 
   noOfCards = getNoOfCards(noOfCards, noOfMatches);
 
-  let noOftypes = noOfCards / noOfMatches;
-  if (noOftypes > types.length) {
-    noOftypes = types.length;
-    noOfCards = noOftypes * noOfMatches;
+  let noOfIcons = noOfCards / noOfMatches;
+  if (noOfIcons > icons.length) {
+    noOfIcons = icons.length;
+    noOfCards = noOfIcons * noOfMatches;
   }
 
-  return createCards(noOfCards, noOftypes);
+  return createCards(noOfCards, noOfIcons);
 };
 
 const toggleCardActive = (card, isActive) => { 

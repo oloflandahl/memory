@@ -1,6 +1,6 @@
 import { START_GAME, END_GAME } from '../actions/gameActions';
 import { ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_TYPE_TO_DONE } from '../actions/cardActions';
-import { types } from '../data/types';
+import { icons } from '../data/icons';
 import { defaultNoOfCards, defaultNoOfMatches, initialCardState } from '../data/constants';
 import cardsReducer from './cardsReducer';
 
@@ -27,7 +27,7 @@ describe(START_GAME, () => {
   it('starting a game should initialize cards with default values', () => {
     const cards = cardsReducer(undefined, action);
     expect(cards.length).toEqual(defaultNoOfCards);
-    expect(cards.filter(card => card.type === types[0]).length).toEqual(defaultNoOfMatches);
+    expect(cards.filter(card => card.type === icons[0]).length).toEqual(defaultNoOfMatches);
   });
 
   it('starting a game with specified numbers should initialize cards with those values', () => {
@@ -35,7 +35,7 @@ describe(START_GAME, () => {
     action.noOfMatches = 4;
     const cards = cardsReducer(undefined, action);
     expect(cards.length).toEqual(action.noOfCards);
-    expect(cards.filter(card => card.type === types[0]).length).toEqual(action.noOfMatches);
+    expect(cards.filter(card => card.type === icons[0]).length).toEqual(action.noOfMatches);
   });
 });
 

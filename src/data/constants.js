@@ -1,4 +1,4 @@
-export const defaultNoOfCards = 10;
+export const defaultNoOfCards = 16;
 export const defaultNoOfMatches = 2;
 export const defaultLockTimeMs = 2000;
 

@@ -1,5 +1,5 @@
 import { defaultNoOfCards, defaultNoOfMatches } from '../data/constants';
-import { types } from '../data/types';
+import { icons } from '../data/icons';
 import { initCards } from './cardHelpers';
 
 describe('initCards', () => {
@@ -17,7 +17,7 @@ describe('initCards', () => {
     });
 
     it('should have the default number of matches', () => {
-      expect(cards.filter(card => card.type === types[0]).length).toEqual(defaultNoOfMatches);
+      expect(cards.filter(card => card.type === icons[0]).length).toEqual(defaultNoOfMatches);
     });
 
     it('should be shuffled differently each time', () => {
@@ -53,7 +53,7 @@ describe('initCards', () => {
 
   it('A too large number of cards should have the maximum possible number of cards', () => {
     const cards = initCards(50);
-    expect(cards.length).toEqual(types.length * defaultNoOfMatches);
+    expect(cards.length).toEqual(icons.length * defaultNoOfMatches);
   });
 
   it('A number of cards that is not a possible product of the number of matches should have the closest product down from that number', () => {

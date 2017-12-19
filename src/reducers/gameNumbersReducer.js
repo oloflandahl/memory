@@ -1,16 +1,16 @@
 import { SET_NO_OF_CARDS, SET_NO_OF_MATCHES } from '../actions/gameActions';
 import { initialGameNumbers, limits } from '../data/constants';
-import { types } from '../data/types';
+import { icons } from '../data/icons';
 import { isBetween } from '../helpers/mathHelpers';
 
 const limitsAndValidation = (state) => {
   const noOfCards = state.noOfCards;
   const noOfMatches = state.noOfMatches;
-  const noOfTypes = types.length;
+  const noOfIcons = icons.length;
 
   const updatedLimits = Object.assign({}, limits, {
     minNoOfCards: Math.min(limits.minNoOfCards, noOfMatches),
-    maxNoOfCards: Math.min(limits.maxNoOfCards, noOfMatches * noOfTypes)
+    maxNoOfCards: Math.min(limits.maxNoOfCards, noOfMatches * noOfIcons)
   });
 
   const isValid = 

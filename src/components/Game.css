@@ -5,5 +5,13 @@
   grid-template-areas: "menu cards";
   width: 100vw;
   height: 100vh;
-  padding: 100px;
+  padding: 2rem;
+}
+
+@media screen and (orientation: portrait) {
+  .container {
+    grid-template-columns: auto;
+    grid-template-rows: 30% 70%;
+    grid-template-areas: "menu" "cards";
+  }
 }
