@@ -21,9 +21,9 @@ export const deactivateCards = () => ({
   type: DEACTIVATE_CARDS
 });
 
-export const setCardTypeToDone = cardType => ({
+export const setCardTypeToDone = cardIcon => ({
   type: CARD_TYPE_TO_DONE, 
-  cardType
+  cardIcon
 });
 
 export const flipCard = id => {
@@ -39,11 +39,11 @@ export const flipCard = id => {
       return;
     }
 
-    const noOfMatches = getNoOfCardsWithType(cards, card.type);
+    const noOfMatches = getNoOfCardsWithType(cards, card.icon);
     const activeCards = getActiveCards(cards);
     if (activeCards.length === noOfMatches - 1) {
-      if (getNoOfCardsWithType(activeCards, card.type) === noOfMatches - 1) {
-        dispatch(setCardTypeToDone(card.type));
+      if (getNoOfCardsWithType(activeCards, card.icon) === noOfMatches - 1) {
+        dispatch(setCardTypeToDone(card.icon));
       } else {
         dispatch(activateCard(id));
         dispatch(toggleLockGame(true));

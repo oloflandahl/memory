@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import './Card.css';
 
 
-const Card = ({onClick, name, isActive, isDone, type, size}) => {
+const Card = ({onClick, name, isActive, isDone, isLocked, icon, size}) => {
 
   const isOpen = isActive || isDone;
-  const className = 'card' + (isOpen ? ' open' : '') + (isDone ? ' done' : '');
-  const typeElement = isOpen ? (<span className="type">{type}</span>) : (<span className="type"></span>);
+  const className = 'card' + 
+    (isOpen ? ' open' : '') + 
+    (isDone ? ' done' : '') + 
+    (isLocked ? ' locked' : '');
 
   return (
     <div className="card-container" style={size}>
       <div className={className} onClick={onClick} >
-        {typeElement}
+        <div className="front">
+          <span className="icon">{icon}</span>
+        </div>
+        <div className="back"></div>
       </div>
     </div>
   );
@@ -23,7 +28,8 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
   isDone: PropTypes.bool.isRequired,
-  type: PropTypes.object.isRequired,
+  isLocked: PropTypes.bool.isRequired,
+  icon: PropTypes.object.isRequired,
   size: PropTypes.shape({
     width: PropTypes.string.isRequired,
     height: PropTypes.string.isRequired

@@ -17,7 +17,7 @@ describe('initCards', () => {
     });
 
     it('should have the default number of matches', () => {
-      expect(cards.filter(card => card.type === icons[0]).length).toEqual(defaultNoOfMatches);
+      expect(cards.filter(card => card.icon === icons[0]).length).toEqual(defaultNoOfMatches);
     });
 
     it('should be shuffled differently each time', () => {

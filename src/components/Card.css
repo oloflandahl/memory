@@ -1,16 +1,41 @@
 .card-container {
   display: inline-block;
   padding: .2rem;
+  perspective: 1000px;
+  vertical-align: top;
 }
 
 .card {
-  display: inline-table;
+  position: relative;
   width: 100%;
   height: 100%;
-  vertical-align: top;
-  font-size: 2.5rem;
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ccc;
+  transition: transform, box-shadow;
+  transition-duration: 0.5s;
+  transform-style: preserve-3d;
+}
 
+.card .front, .card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card .front {
+  display: inline-table;
+  font-size: 2.5rem;
+  background: #fff;
+  transform: rotateY(180deg);
+  transition: background .5s ease-in-out;
+}
+
+.card .back {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
   background: #36c;
   background: 
     linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
@@ -18,19 +43,31 @@
     linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
     linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px, #36c;
   background-size: 15px 30px;
+  cursor: pointer;
+}
 
-  transition: box-shadow ease-in-out .4s, border ease-in-out .4s;
+.card.locked .back {
+  cursor: not-allowed;
 }
-.card.open {
-  background: #fff;
-  box-shadow: 5px 5px 10px -6px rgba(0, 0, 0, 0.2);
+
+.card.open, .card.done {
+  transform: rotateY(180deg);
 }
+
+.card:hover, .card.open {
+  //transform: translateZ(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .card.done {
-  background: #f4f4f4;
-  box-shadow: inset 5x 5px 10px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.card .type {
+.card.done .front {
+  background: #f4f4f4;
+}
+
+.card .front .icon {
   display: table-cell;
   vertical-align: middle;
   text-align: center;

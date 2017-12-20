@@ -7,6 +7,7 @@ const mapStateToProps = state => {
   const percentage = getMaxPercentageSize(state.cards.length) + '%';
   return {
     cards: state.cards,
+    isLocked: state.gameState.isLocked,
     size: {
       width: percentage,
       height: percentage

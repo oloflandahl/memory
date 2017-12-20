@@ -12,7 +12,7 @@ const createCard = (i, noOfIcons) => {
   return Object.assign({}, initialCardState, { 
     id: i, 
     name: 'Card '+i, // Remove
-    type: icons[i % noOfIcons] 
+    icon: icons[i % noOfIcons] 
   });
 };
 
@@ -64,7 +64,7 @@ const toggleCardDone = (card, isDone) => {
 
 const getCard = (cards, id) => ( cards.filter(card => card.id === id)[0] );
 const getActiveCards = cards => ( cards.filter(card => card.isActive) );
-const getNoOfCardsWithType = (cards, type) => ( cards.filter(card => card.type === type).length );
+const getNoOfCardsWithType = (cards, icon) => ( cards.filter(card => card.icon === icon).length );
 
 
 export { initCards, toggleCardActive, toggleCardDone, getCard, getActiveCards, getNoOfCardsWithType };

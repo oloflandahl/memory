@@ -27,7 +27,7 @@ export const initialGameState = {
 export const initialCardState = { 
   id: null,
   name: null,
-  type: null,
+  icon: null,
   isActive: false, 
   isDone: false 
 };

@@ -1,13 +1,13 @@
 import { START_GAME, END_GAME } from '../actions/gameActions';
-import { ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_TYPE_TO_DONE } from '../actions/cardActions';
+import { ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_ICON_TO_DONE } from '../actions/cardActions';
 import { icons } from '../data/icons';
 import { defaultNoOfCards, defaultNoOfMatches, initialCardState } from '../data/constants';
 import cardsReducer from './cardsReducer';
 
 
-const card = Object.assign({}, initialCardState, {id: 1, type: 'TYPE'});
-const activeCard = Object.assign({}, initialCardState, {id: 2, isActive: true, type: 'TYPE'});
-const doneCard = Object.assign({}, initialCardState, {id: 3, isDone: true, type: 'TYPE'});
+const card = Object.assign({}, initialCardState, {id: 1, icon: 'ICON'});
+const activeCard = Object.assign({}, initialCardState, {id: 2, isActive: true, icon: 'ICON'});
+const doneCard = Object.assign({}, initialCardState, {id: 3, isDone: true, icon: 'ICON'});
 const mockCards = [
   card, 
   activeCard, 
@@ -20,14 +20,14 @@ describe(START_GAME, () => {
 
   beforeEach(() => {
     action = {
-      type: START_GAME
+      icon: START_GAME
     }
   });
 
   it('starting a game should initialize cards with default values', () => {
     const cards = cardsReducer(undefined, action);
     expect(cards.length).toEqual(defaultNoOfCards);
-    expect(cards.filter(card => card.type === icons[0]).length).toEqual(defaultNoOfMatches);
+    expect(cards.filter(card => card.icon === icons[0]).length).toEqual(defaultNoOfMatches);
   });
 
   it('starting a game with specified numbers should initialize cards with those values', () => {
@@ -35,7 +35,7 @@ describe(START_GAME, () => {
     action.noOfMatches = 4;
     const cards = cardsReducer(undefined, action);
     expect(cards.length).toEqual(action.noOfCards);
-    expect(cards.filter(card => card.type === icons[0]).length).toEqual(action.noOfMatches);
+    expect(cards.filter(card => card.icon === icons[0]).length).toEqual(action.noOfMatches);
   });
 });
 
@@ -43,7 +43,7 @@ describe(END_GAME, () => {
 
   beforeEach(() => {
     action = {
-      type: END_GAME
+      icon: END_GAME
     }
   });
 
@@ -58,7 +58,7 @@ describe(ACTIVATE_CARD, () => {
 
   beforeEach(() => {
     action = {
-      type: ACTIVATE_CARD
+      icon: ACTIVATE_CARD
     }
   });
 
@@ -86,7 +86,7 @@ describe(DEACTIVATE_CARDS, () => {
 
   beforeEach(() => {
     action = {
-      type: DEACTIVATE_CARDS
+      icon: DEACTIVATE_CARDS
     }
   });
 
@@ -99,12 +99,12 @@ describe(DEACTIVATE_CARDS, () => {
 
 });
 
-describe(CARD_TYPE_TO_DONE, () => {
+describe(CARD_ICON_TO_DONE, () => {
 
   beforeEach(() => {
     action = {
-      type: CARD_TYPE_TO_DONE,
-      cardType: 'TYPE'
+      icon: CARD_ICON_TO_DONE,
+      cardIcon: 'ICON'
     }
   });
 
@@ -123,8 +123,8 @@ describe(CARD_TYPE_TO_DONE, () => {
     expect(cards[2].isDone).toEqual(true);
   });
 
-  it('setting another type to done should do nothing', () => {
-    action.cardType = 'TYPE2';
+  it('setting another icon to done should do nothing', () => {
+    action.cardIcon = 'ICON2';
     const cards = cardsReducer(mockCards, action);
     expect(cards[0].isDone).toEqual(false);
     expect(cards[1].isDone).toEqual(false);
