@@ -1,5 +1,5 @@
 import { START_GAME, DONE_GAME, END_GAME, TOGGLE_LOCK_GAME } from '../actions/gameActions';
-import { DEACTIVATE_CARDS, CARD_TYPE_TO_DONE } from '../actions/cardActions';
+import { DEACTIVATE_CARDS, CARD_ICON_TO_DONE } from '../actions/cardActions';
 import { initialGameState } from '../data/constants';
 import gameStateReducer from './gameStateReducer';
 
@@ -89,11 +89,11 @@ describe(DEACTIVATE_CARDS, () => {
 
 });
 
-describe(CARD_TYPE_TO_DONE, () => {
+describe(CARD_ICON_TO_DONE, () => {
 
   beforeEach(() => {
     action = {
-      type: CARD_TYPE_TO_DONE
+      type: CARD_ICON_TO_DONE
     }
   });
 

@@ -1,5 +1,5 @@
 import { START_GAME, END_GAME } from '../actions/gameActions';
-import { ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_TYPE_TO_DONE } from '../actions/cardActions';
+import { ACTIVATE_CARD, DEACTIVATE_CARDS, CARD_ICON_TO_DONE } from '../actions/cardActions';
 import { initCards, toggleCardActive, toggleCardDone } from '../helpers/cardHelpers';
 
 const cardsReducer = (state = [], action) => {
@@ -12,7 +12,7 @@ const cardsReducer = (state = [], action) => {
       return state.map(card => toggleCardActive(card, card.isActive || card.id === action.id));
     case DEACTIVATE_CARDS:
       return state.map(card => toggleCardActive(card, false));
-    case CARD_TYPE_TO_DONE:
+    case CARD_ICON_TO_DONE:
       return state.map(card => toggleCardDone(card, card.isDone || card.icon === action.cardIcon));
     default:
       return state;

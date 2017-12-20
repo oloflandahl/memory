@@ -1,5 +1,5 @@
 import { defaultLockTimeMs } from '../data/constants';
-import { getCard, getActiveCards, getNoOfCardsWithType } from '../helpers/cardHelpers';
+import { getCard, getActiveCards, getNoOfCardsWithIcon } from '../helpers/cardHelpers';
 import { toggleLockGame } from './gameActions';
 
 
@@ -7,7 +7,7 @@ import { toggleLockGame } from './gameActions';
 
 export const ACTIVATE_CARD = 'ACTIVATE_CARD';
 export const DEACTIVATE_CARDS = 'DEACTIVATE_CARDS';
-export const CARD_TYPE_TO_DONE = 'CARD_TYPE_TO_DONE';
+export const CARD_ICON_TO_DONE = 'CARD_ICON_TO_DONE';
 
 
 // Action creators
@@ -21,8 +21,8 @@ export const deactivateCards = () => ({
   type: DEACTIVATE_CARDS
 });
 
-export const setCardTypeToDone = cardIcon => ({
-  type: CARD_TYPE_TO_DONE, 
+export const setCardIconToDone = cardIcon => ({
+  type: CARD_ICON_TO_DONE, 
   cardIcon
 });
 
@@ -39,11 +39,11 @@ export const flipCard = id => {
       return;
     }
 
-    const noOfMatches = getNoOfCardsWithType(cards, card.icon);
+    const noOfMatches = getNoOfCardsWithIcon(cards, card.icon);
     const activeCards = getActiveCards(cards);
     if (activeCards.length === noOfMatches - 1) {
-      if (getNoOfCardsWithType(activeCards, card.icon) === noOfMatches - 1) {
-        dispatch(setCardTypeToDone(card.icon));
+      if (getNoOfCardsWithIcon(activeCards, card.icon) === noOfMatches - 1) {
+        dispatch(setCardIconToDone(card.icon));
       } else {
         dispatch(activateCard(id));
         dispatch(toggleLockGame(true));
@@ -56,5 +56,5 @@ export const flipCard = id => {
       dispatch(activateCard(id));
     }
 
-  }
+  };
 };

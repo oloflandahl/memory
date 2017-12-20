@@ -64,7 +64,7 @@ const toggleCardDone = (card, isDone) => {
 
 const getCard = (cards, id) => ( cards.filter(card => card.id === id)[0] );
 const getActiveCards = cards => ( cards.filter(card => card.isActive) );
-const getNoOfCardsWithType = (cards, icon) => ( cards.filter(card => card.icon === icon).length );
+const getNoOfCardsWithIcon = (cards, icon) => ( cards.filter(card => card.icon === icon).length );
 
 
-export { initCards, toggleCardActive, toggleCardDone, getCard, getActiveCards, getNoOfCardsWithType };
+export { initCards, toggleCardActive, toggleCardDone, getCard, getActiveCards, getNoOfCardsWithIcon };

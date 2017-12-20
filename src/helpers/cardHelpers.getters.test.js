@@ -1,4 +1,4 @@
-import { getCard, getActiveCards, getNoOfCardsWithType } from './cardHelpers';
+import { getCard, getActiveCards, getNoOfCardsWithIcon } from './cardHelpers';
 
 const mockCards = [
   {id: 4, icon: 'icon2'},
@@ -35,12 +35,12 @@ describe('getActiveCards', () => {
   
 });
 
-describe('getNoOfCardsWithType', () => {
+describe('getNoOfCardsWithIcon', () => {
 
   it('should get the number of cards with the specified icon', () => {
-    expect(getNoOfCardsWithType(mockCards, 'icon1')).toEqual(2);
-    expect(getNoOfCardsWithType(mockCards, 'icon2')).toEqual(3);
-    expect(getNoOfCardsWithType(mockCards, 'icon3')).toEqual(0);
+    expect(getNoOfCardsWithIcon(mockCards, 'icon1')).toEqual(2);
+    expect(getNoOfCardsWithIcon(mockCards, 'icon2')).toEqual(3);
+    expect(getNoOfCardsWithIcon(mockCards, 'icon3')).toEqual(0);
   });
   
 });

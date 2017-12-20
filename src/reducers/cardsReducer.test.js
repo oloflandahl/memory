@@ -20,7 +20,7 @@ describe(START_GAME, () => {
 
   beforeEach(() => {
     action = {
-      icon: START_GAME
+      type: START_GAME
     }
   });
 
@@ -43,7 +43,7 @@ describe(END_GAME, () => {
 
   beforeEach(() => {
     action = {
-      icon: END_GAME
+      type: END_GAME
     }
   });
 
@@ -58,7 +58,7 @@ describe(ACTIVATE_CARD, () => {
 
   beforeEach(() => {
     action = {
-      icon: ACTIVATE_CARD
+      type: ACTIVATE_CARD
     }
   });
 
@@ -86,7 +86,7 @@ describe(DEACTIVATE_CARDS, () => {
 
   beforeEach(() => {
     action = {
-      icon: DEACTIVATE_CARDS
+      type: DEACTIVATE_CARDS
     }
   });
 
@@ -103,7 +103,7 @@ describe(CARD_ICON_TO_DONE, () => {
 
   beforeEach(() => {
     action = {
-      icon: CARD_ICON_TO_DONE,
+      type: CARD_ICON_TO_DONE,
       cardIcon: 'ICON'
     }
   });
