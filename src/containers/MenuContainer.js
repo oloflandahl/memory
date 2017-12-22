@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setNoOfCards, setNoOfMatches, startGame } from '../actions/gameActions'
+import { setNoOfCards, setNoOfMatches, startGame, endGame } from '../actions/gameActions'
 import Menu from '../components/Menu'
 
 const mapStateToProps = state => {
@@ -29,8 +29,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onStartGame: (noOfCards, noOfMatches) => {
       dispatch(startGame(noOfCards, noOfMatches));
     },
-    onRestartGame: (noOfCards, noOfMatches) => {
-      dispatch(startGame(noOfCards, noOfMatches));
+    onRestartGame: () => {
+      dispatch(endGame());
     }
   };
 };

@@ -1,5 +1,18 @@
-import { isBetween, getMaxPercentageSize } from './mathHelpers';
+import { getValueBetween, isBetween, getMaxPercentageSize } from './mathHelpers';
 
+describe('getValueBetween', () => {
+
+  it('should return a value between the range', () => {
+    expect(getValueBetween(5, 1, 9)).toEqual(5);
+    expect(getValueBetween(5, 1, 5)).toEqual(5);
+    expect(getValueBetween(5, 5, 9)).toEqual(5);
+    expect(getValueBetween(5, 5, 5)).toEqual(5);
+    expect(getValueBetween(5, -5, 9)).toEqual(5);
+    expect(getValueBetween(5, 0, 4)).toEqual(4);
+    expect(getValueBetween(5, 6, 9)).toEqual(6);
+  });
+  
+});
 
 describe('isBetween', () => {
 

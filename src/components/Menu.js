@@ -14,7 +14,7 @@ const Menu = ({ showStartControls, isGameActive, gameNumbers, noOfUsedIcons, gam
     ) : null;
 
   const resetButton = isGameActive ? (
-      <button className="btn" onClick={onRestartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)}>Restart</button>
+      <button className="btn" onClick={onRestartGame.bind(this)}>Restart</button>
     ) : null;
 
   const stats = isGameActive ? (
