@@ -1,4 +1,4 @@
-import { defaultLockTimeMs } from '../data/constants';
+import { defaultSuccessLockTimeMs, defaultFailLockTimeMs } from '../data/constants';
 import { getCard, getActiveCards, getNoOfCardsWithIcon } from '../helpers/cardHelpers';
 import { toggleLockGame } from './gameActions';
 
@@ -39,21 +39,23 @@ export const flipCard = id => {
       return;
     }
 
+    dispatch(activateCard(id));
+
     const noOfMatches = getNoOfCardsWithIcon(cards, card.icon);
     const activeCards = getActiveCards(cards);
     if (activeCards.length === noOfMatches - 1) {
+      dispatch(toggleLockGame(true));
       if (getNoOfCardsWithIcon(activeCards, card.icon) === noOfMatches - 1) {
-        dispatch(setCardIconToDone(card.icon));
+        setTimeout(() => {
+          dispatch(toggleLockGame(false));
+          dispatch(setCardIconToDone(card.icon));
+        }, defaultSuccessLockTimeMs);
       } else {
-        dispatch(activateCard(id));
-        dispatch(toggleLockGame(true));
         setTimeout(() => {
           dispatch(toggleLockGame(false));
           dispatch(deactivateCards());
-        }, defaultLockTimeMs);
+        }, defaultFailLockTimeMs);
       }
-    } else {
-      dispatch(activateCard(id));
     }
 
   };

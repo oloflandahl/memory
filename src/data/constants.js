@@ -1,6 +1,7 @@
 export const defaultNoOfCards = 16;
 export const defaultNoOfMatches = 2;
-export const defaultLockTimeMs = 2000;
+export const defaultSuccessLockTimeMs = 500;
+export const defaultFailLockTimeMs = 2000;
 
 export const limits = {
   minNoOfCards: 2,
