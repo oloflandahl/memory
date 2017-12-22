@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Input from './Input';
 import './Menu.css';
 
-const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
+const Menu = ({ showStartControls, isGameActive, gameNumbers, noOfUsedIcons, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
 
   const startControls = showStartControls ? (
       <div>
@@ -13,9 +13,24 @@ const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onCh
       </div>
     ) : null;
 
-  const resetButton = showResetButton ? (
+  const resetButton = isGameActive ? (
       <button className="btn" onClick={onRestartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)}>Restart</button>
     ) : null;
+
+  const stats = isGameActive ? (
+    <div className="stats-container">
+      <span className="stat">{gameState.noOfSuccesses}</span>
+      /
+      <span className="stat">{noOfUsedIcons}</span>
+    </div>
+  ) : null;
+
+  const progressStyle = { width: (100 * gameState.noOfSuccesses / noOfUsedIcons) + '%' };
+  const progress = isGameActive ? (
+    <div className="progress-container">
+      <div className="progress" style={progressStyle}></div>
+    </div>
+  ) : null;
 
   return (
     <div className="menu-container">
@@ -24,8 +39,8 @@ const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onCh
         {resetButton}
       </div>
       <div>
-        <div>Success: {gameState.noOfSuccesses}</div>
-        <div>Fail: {gameState.noOfFails}</div>
+        {progress}
+        {stats}
       </div>
     </div>
   );
@@ -34,11 +49,12 @@ const Menu = ({ showStartControls, showResetButton, gameNumbers, gameState, onCh
 
 Menu.propTypes = {
   showStartControls: PropTypes.bool.isRequired,
-  showResetButton: PropTypes.bool.isRequired,
+  isGameActive: PropTypes.bool.isRequired,
   gameNumbers: PropTypes.shape({
     noOfCards: PropTypes.number.isRequired,
     noOfMatches: PropTypes.number.isRequired
   }).isRequired,
+  noOfUsedIcons: PropTypes.number.isRequired,
   gameState: PropTypes.shape({
     noOfSuccesses: PropTypes.number.isRequired,
     noOfFails: PropTypes.number.isRequired

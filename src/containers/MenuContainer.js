@@ -9,9 +9,10 @@ const mapStateToProps = state => {
 
   return {
     showStartControls: !isStarted,
-    showResetButton: isStarted && !isDone,
+    isGameActive: isStarted && !isDone,
     gameState: gameState,
-    gameNumbers: state.gameNumbers
+    gameNumbers: state.gameNumbers,
+    noOfUsedIcons: state.gameNumbers.noOfCards / state.gameNumbers.noOfMatches
   };
 };
 

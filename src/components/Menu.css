@@ -17,3 +17,18 @@
 .menu-container .btn {
   margin-top: 1rem;
 }
+
+.menu-container .stat {
+  padding: 1rem;
+}
+
+.menu-container .progress-container {
+  height: 10px;
+  background-color: #fcc;
+}
+
+.menu-container .progress {
+  height: 100%;
+  background-color: #3c3;
+  transition: width ease-in-out 0.4s;
+}

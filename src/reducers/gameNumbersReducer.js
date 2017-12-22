@@ -1,11 +1,11 @@
 import { SET_NO_OF_CARDS, SET_NO_OF_MATCHES } from '../actions/gameActions';
 import { initialGameNumbers, limits } from '../data/constants';
 import { icons } from '../data/icons';
-import { isBetween } from '../helpers/mathHelpers';
+import { getValueBetween, isBetween } from '../helpers/mathHelpers';
 
 const limitsAndValidation = (state) => {
-  const noOfCards = state.noOfCards;
-  const noOfMatches = state.noOfMatches;
+  let noOfCards = state.noOfCards;
+  let noOfMatches = state.noOfMatches;
   const noOfIcons = icons.length;
 
   const updatedLimits = Object.assign({}, limits, {
@@ -13,12 +13,22 @@ const limitsAndValidation = (state) => {
     maxNoOfCards: Math.min(limits.maxNoOfCards, noOfMatches * noOfIcons)
   });
 
+  noOfMatches = getValueBetween(noOfMatches, updatedLimits.minNoOfMatches, updatedLimits.maxNoOfMatches);
+  noOfCards = getValueBetween(noOfCards, updatedLimits.minNoOfCards, updatedLimits.maxNoOfCards);
+  noOfCards -= (noOfCards % noOfMatches);
+
+  if (!noOfCards) {
+    noOfCards = noOfMatches;
+  }
+
   const isValid = 
     isBetween(noOfCards, updatedLimits.minNoOfCards, updatedLimits.maxNoOfCards) && 
     isBetween(noOfMatches, updatedLimits.minNoOfMatches, updatedLimits.maxNoOfMatches) &&
     noOfCards % noOfMatches === 0;
 
   return { 
+    noOfCards: noOfCards,
+    noOfMatches: noOfMatches,
     limits: updatedLimits, 
     isValid: isValid 
   };
