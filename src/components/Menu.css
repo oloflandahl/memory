@@ -14,22 +14,11 @@
   }
 }
 
+.menu-container .header {
+  font-size: 1.5rem;
+  color: #36c
+}
+
 .menu-container .btn {
   margin-top: 1rem;
-}
-
-.menu-container .stat {
-  padding: 1rem;
-}
-
-.menu-container .progress-container {
-  height: .3rem;
-  margin-bottom: 5px;
-  background-color: #f4f4f4;
-}
-
-.menu-container .progress {
-  height: 100%;
-  background-color: #33cc3b;
-  transition: width ease-in-out 0.4s;
 }
