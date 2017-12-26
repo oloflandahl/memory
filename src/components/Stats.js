@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StartControls from './StartControls';
-import Progress from './Progress';
 import './Stats.css';
 
 const Stats = ({ isGameActive, noOfUsedIcons, gameState }) => {

@@ -1,12 +1,16 @@
 import { connect } from 'react-redux'
-import { getMaxPercentageSize } from '../helpers/mathHelpers'
+import { getMaxPercentageSize, getWholeSeconds } from '../helpers/mathHelpers'
 import { flipCard } from '../actions/cardActions'
 import Cards from '../components/Cards'
 
 const mapStateToProps = state => {
-  const percentage = getMaxPercentageSize(state.cards.length) + '%';
+  const noOfCards = state.cards.length;
+  const percentage = getMaxPercentageSize(noOfCards) + '%';
+  const isDone = noOfCards > 0 && state.cards.filter(card => card.isDone).length === noOfCards;
+  const doneStats = isDone ? Object.assign({}, state.gameNumbers, state.gameState, { seconds: getWholeSeconds(state.gameState.startTime, new Date()) }) : null;
   return {
     cards: state.cards,
+    doneStats: doneStats,
     isLocked: state.gameState.isLocked,
     size: {
       width: percentage,

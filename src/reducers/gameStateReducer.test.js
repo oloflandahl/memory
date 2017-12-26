@@ -1,4 +1,4 @@
-import { START_GAME, DONE_GAME, END_GAME, TOGGLE_LOCK_GAME } from '../actions/gameActions';
+import { START_GAME, END_GAME, TOGGLE_LOCK_GAME } from '../actions/gameActions';
 import { DEACTIVATE_CARDS, CARD_ICON_TO_DONE } from '../actions/cardActions';
 import { initialGameState } from '../data/constants';
 import gameStateReducer from './gameStateReducer';
@@ -16,21 +16,6 @@ describe(START_GAME, () => {
   it('starting a game should mark it as started', () => {
     const gameState = gameStateReducer(undefined, action);
     expect(gameState.isStarted).toEqual(true);
-  });
-
-});
-
-describe(DONE_GAME, () => {
-
-  beforeEach(() => {
-    action = {
-      type: DONE_GAME
-    }
-  });
-
-  it('when a game is done it should be marked as done', () => {
-    const gameState = gameStateReducer(undefined, action);
-    expect(gameState.isDone).toEqual(true);
   });
 
 });
