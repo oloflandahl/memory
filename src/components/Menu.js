@@ -36,11 +36,11 @@ const Menu = ({ showStartControls, isGameActive, gameNumbers, noOfUsedIcons, gam
     <div className="menu-container">
       <div>
         {startControls}
-        {resetButton}
-      </div>
-      <div>
         {progress}
         {stats}
+      </div>
+      <div>
+        {resetButton}
       </div>
     </div>
   );
