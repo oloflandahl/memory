@@ -7,8 +7,8 @@ const Menu = ({ showStartControls, isGameActive, gameNumbers, noOfUsedIcons, gam
 
   const startControls = showStartControls ? (
       <div>
-        <Input value={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min={gameNumbers.limits.minNoOfMatches} max={gameNumbers.limits.maxNoOfMatches} step={1} />
-        <Input value={gameNumbers.noOfCards} onChange={onChangeNoOfCards} min={gameNumbers.noOfMatches} max={gameNumbers.limits.maxNoOfCards} step={gameNumbers.noOfMatches} />
+        <Input header="Matches" value={gameNumbers.noOfMatches} onChange={onChangeNoOfMatches} min={gameNumbers.limits.minNoOfMatches} max={gameNumbers.limits.maxNoOfMatches} step={1} />
+        <Input header="Cards" value={gameNumbers.noOfCards} onChange={onChangeNoOfCards} min={gameNumbers.noOfMatches} max={gameNumbers.limits.maxNoOfCards} step={gameNumbers.noOfMatches} />
         <button className="btn" onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!gameNumbers.isValid}>Start</button>
       </div>
     ) : null;

@@ -23,12 +23,13 @@
 }
 
 .menu-container .progress-container {
-  height: 10px;
-  background-color: #fcc;
+  height: .3rem;
+  margin-bottom: 5px;
+  background-color: #f4f4f4;
 }
 
 .menu-container .progress {
   height: 100%;
-  background-color: #3c3;
+  background-color: #33cc3b;
   transition: width ease-in-out 0.4s;
 }

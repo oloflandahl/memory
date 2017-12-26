@@ -25,15 +25,19 @@ class CustomInput extends React.Component {
   render() {
     return (
       <div className="input-container">
-        <span className="icon" onClick={this.onDecrement.bind(this)}><FaMinus /></span>
-        <input type="number" value={this.props.value} onChange={this.props.onChange} min={this.props.min} max={this.props.max} step={this.props.step} />
-        <span className="icon" onClick={this.onIncrement.bind(this)}><FaPlus /></span>
+        <label>{this.props.header}</label>
+        <div className="input-content">
+          <span className="icon" onClick={this.onDecrement.bind(this)}><FaMinus /></span>
+          <input type="number" value={this.props.value} onChange={this.props.onChange} min={this.props.min} max={this.props.max} step={this.props.step} readOnly />
+          <span className="icon" onClick={this.onIncrement.bind(this)}><FaPlus /></span>
+        </div>
       </div>
     );
   }
 }
 
 CustomInput.propTypes = {
+  header: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,

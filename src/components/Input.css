@@ -2,6 +2,13 @@
   padding: 15px;
 }
 
+.input-container label {
+  display: block;
+  font-size: 0.3rem;
+  line-height: 0.3rem;
+  text-transform: uppercase;
+}
+
 .input-container input {
   width: 3rem;
   font-size: 1rem;
