@@ -1,20 +1,55 @@
 .done-box-container {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  right: 50%;
+  bottom: 50%;
+  z-index: 10;
+  transition: all ease-out 1s;
+}
+
+.done-box-container.in {
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
   padding: 2rem;
 }
 
 .done-box-container .done-box {
   width: 100%;
   height: 100%;
-  padding: 1rem;
   background: rgba(255,255,255,0.9);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   font-size: .5rem;
   line-height: .5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  opacity: 0;
+  transition: all ease-out 1s;
+}
+
+.done-box-container.in .done-box {
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.done-box-container .done-box .done-box-inner {
+  position: relative;
+}
+
+.done-box-container .done-box .done-box-inner .close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1rem;
+  opacity: .5;
+  transition: opacity .5s;
+}
+
+.done-box-container .done-box .done-box-inner .close-icon:hover {
+  opacity: 1;
+  cursor: pointer;
 }

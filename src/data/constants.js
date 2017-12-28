@@ -30,5 +30,6 @@ export const initialCardState = {
   name: null,
   icon: null,
   isActive: false, 
-  isDone: false 
+  isDone: false,
+  noStats: false
 };

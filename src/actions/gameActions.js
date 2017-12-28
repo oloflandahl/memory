@@ -4,6 +4,7 @@ export const SET_NO_OF_CARDS = 'SET_NO_OF_CARDS';
 export const SET_NO_OF_MATCHES = 'SET_NO_OF_MATCHES';
 export const START_GAME = 'START_GAME';
 export const END_GAME = 'END_GAME';
+export const CLEAR_STATE = 'CLEAR_STATE';
 export const TOGGLE_LOCK_GAME = 'TOGGLE_LOCK_GAME';
 
 
@@ -27,6 +28,10 @@ export const startGame = (noOfCards, noOfMatches) => ({
 
 export const endGame = () => ({ 
   type: END_GAME
+});
+
+export const clearState = () => ({ 
+  type: CLEAR_STATE
 });
 
 export const toggleLockGame = lock => ({
