@@ -19,7 +19,7 @@
 .done-box-container .done-box {
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.75);
   font-size: .5rem;
   line-height: .5rem;
   overflow: hidden;
@@ -38,6 +38,8 @@
 
 .done-box-container .done-box .done-box-inner {
   position: relative;
+  text-align: center;
+  color: #fff;
 }
 
 .done-box-container .done-box .done-box-inner .close-icon {
@@ -52,4 +54,11 @@
 .done-box-container .done-box .done-box-inner .close-icon:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.done-box-container .done-box .done-box-inner .done-item {
+  display: inline-block;
+  margin: .5rem;
+  padding: 1rem;
+  font-size: 2rem;
 }
