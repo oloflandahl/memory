@@ -16,10 +16,5 @@
 
 .menu-container .header {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #36c
-}
-
-.menu-container .btn {
-  margin-top: 1rem;
+  color: rgba(0,0,0,.5);
 }
