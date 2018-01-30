@@ -1,0 +1,7 @@
+.done-item {
+  font-size: 1.8rem;
+}
+
+.done-item > .done-item-text {
+  vertical-align: middle;
+}
