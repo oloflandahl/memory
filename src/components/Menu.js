@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FaPlay from 'react-icons/lib/fa/play';
+import FaStop from 'react-icons/lib/fa/stop';
 import StartControls from './StartControls';
 import Progress from './Progress';
 import Stats from './Stats';
@@ -7,12 +9,11 @@ import './Menu.css';
 
 const Menu = ({ showStartControls, isGameActive, gameNumbers, noOfUsedIcons, gameState, onChangeNoOfCards, onChangeNoOfMatches, onStartGame, onRestartGame }) => {
 
-  const button = isGameActive ? ( <button className="btn" onClick={onRestartGame.bind(this)}>Restart</button> ) : 
-    ( <button className="btn" onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!gameNumbers.isValid}>Start</button> );
+  const button = isGameActive ? ( <span className="action-icon" onClick={onRestartGame.bind(this)}><FaStop /></span> ) : 
+    ( <span className="action-icon" onClick={onStartGame.bind(this, gameNumbers.noOfCards, gameNumbers.noOfMatches)} disabled={!gameNumbers.isValid}><FaPlay /></span> );
 
   return (
     <div className="menu-container">
-      <div className="header">Memory</div>
       <div>
         <StartControls showStartControls={showStartControls} gameNumbers={gameNumbers} onChangeNoOfCards={onChangeNoOfCards} onChangeNoOfMatches={onChangeNoOfMatches} onStartGame={onStartGame} />
         <Progress isGameActive={isGameActive} noOfUsedIcons={noOfUsedIcons} gameState={gameState} />

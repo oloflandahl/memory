@@ -4,8 +4,8 @@
 
 .input-container label {
   display: block;
-  font-size: 0.5rem;
-  line-height: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
   text-transform: uppercase;
 }
 
@@ -26,7 +26,9 @@
 }
 
 .input-container .icon {
-  opacity: 0.5;
+  color: #cc7333;
+  opacity: 0.7;
+  transition: opacity .4s ease-in-out;
 }
 
 .input-container .icon:hover {

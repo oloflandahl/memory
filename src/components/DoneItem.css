@@ -3,5 +3,6 @@
 }
 
 .done-item > .done-item-text {
+  margin-left: .5rem;
   vertical-align: middle;
 }
